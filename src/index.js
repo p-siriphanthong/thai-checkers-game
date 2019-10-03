@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker'
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: gray;
+    background-color: SlateGrey;
   }
 `
 
