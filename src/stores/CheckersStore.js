@@ -2,8 +2,8 @@ import * as R from 'ramda'
 import { decorate, observable, computed, action } from 'mobx'
 import { BLACK, WHITE, EMPTY } from '../constants'
 import getWhiteDirection from '../selectors/getWhiteDirection'
-import getBlackDirection from '../selectors/getWhiteDirection'
-import getKingDirection from '../selectors/getWhiteDirection'
+import getBlackDirection from '../selectors/getBlackDirection'
+import getKingDirection from '../selectors/getKingDirection'
 
 const checker = (code, isKing = false) => ({ code, isKing })
 const black = checker(BLACK)

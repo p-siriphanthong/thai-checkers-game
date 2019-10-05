@@ -32,18 +32,19 @@ const Checkers = ({ checkersStore, size = 80 }) => {
         [...Array(8).keys()].map(column => {
           const position = { row, column }
           return (
-          <Square
-            key={`${row}-${column}`}
-            active={R.includes(position)(availablePositions)}
-            dark={(row + column) % 2 !== 0}
-            size={size}
-          >
-            <Piece
-              checker={checkersStore.board[row][column]}
-              position={position}
-            />
-          </Square>
-        )}),
+            <Square
+              key={`${row}-${column}`}
+              active={R.includes(position)(availablePositions)}
+              dark={(row + column) % 2 !== 0}
+              size={size}
+            >
+              <Piece
+                checker={checkersStore.board[row][column]}
+                position={position}
+              />
+            </Square>
+          )
+        }),
       )}
     </Wrapper>
   )
