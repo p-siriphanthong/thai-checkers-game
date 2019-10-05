@@ -3,14 +3,14 @@ import { BLACK, EMPTY } from '../constants'
 
 const getLeftDirection = (board, position) => {
   const availablePositions = []
-  const code = R.path([position.row - 1, position.column - 1, 'code'])(board)
-  if (code === EMPTY) {
+  const leftCode = R.path([position.row - 1, position.column - 1, 'code'])(board)
+  if (leftCode === EMPTY) {
     availablePositions.push({
       row: position.row - 1,
       column: position.column - 1,
     })
   } else if (
-    code === BLACK &&
+    leftCode === BLACK &&
     R.path([position.row - 2, position.column - 2, 'code'])(board) === EMPTY
   ) {
     availablePositions.push({
@@ -23,14 +23,14 @@ const getLeftDirection = (board, position) => {
 
 const getRightDirection = (board, position) => {
   const availablePositions = []
-  const code = R.path([position.row - 1, position.column + 1, 'code'])(board)
-  if (code === EMPTY) {
+  const rightCode = R.path([position.row - 1, position.column + 1, 'code'])(board)
+  if (rightCode === EMPTY) {
     availablePositions.push({
       row: position.row - 1,
       column: position.column + 1,
     })
   } else if (
-    code === BLACK &&
+    rightCode === BLACK &&
     R.path([position.row - 2, position.column + 2, 'code'])(board) === EMPTY
   ) {
     availablePositions.push({
