@@ -3,7 +3,9 @@ import { BLACK, EMPTY } from '../constants'
 
 const getLeftDirection = (board, position) => {
   const availablePositions = []
-  const leftCode = R.path([position.row - 1, position.column - 1, 'code'])(board)
+  const leftCode = R.path([position.row - 1, position.column - 1, 'code'])(
+    board,
+  )
   if (leftCode === EMPTY) {
     availablePositions.push({
       row: position.row - 1,
@@ -23,7 +25,9 @@ const getLeftDirection = (board, position) => {
 
 const getRightDirection = (board, position) => {
   const availablePositions = []
-  const rightCode = R.path([position.row - 1, position.column + 1, 'code'])(board)
+  const rightCode = R.path([position.row - 1, position.column + 1, 'code'])(
+    board,
+  )
   if (rightCode === EMPTY) {
     availablePositions.push({
       row: position.row - 1,
@@ -41,10 +45,8 @@ const getRightDirection = (board, position) => {
   return availablePositions
 }
 
-const getWhiteDirection = (board, position) =>
+export default (board, position) =>
   R.concat(
     getLeftDirection(board, position),
     getRightDirection(board, position),
   )
-
-export default getWhiteDirection
