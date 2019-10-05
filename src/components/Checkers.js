@@ -37,6 +37,11 @@ const Checkers = ({ checkersStore, size = 80 }) => {
               active={R.includes(position)(availablePositions)}
               dark={(row + column) % 2 !== 0}
               size={size}
+              onClick={
+                R.includes(position)(availablePositions)
+                  ? () => checkersStore.move(position)
+                  : undefined
+              }
             >
               <Piece
                 checker={checkersStore.board[row][column]}

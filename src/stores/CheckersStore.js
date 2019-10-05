@@ -30,7 +30,8 @@ class CheckersStore {
     if (this.selected) {
       const piece = this.board[this.selected.row][this.selected.column]
       if (piece.isKing) return getKingDirection(this.board, this.selected)
-      if (piece.code === WHITE) return getWhiteDirection(this.board, this.selected)
+      if (piece.code === WHITE)
+        return getWhiteDirection(this.board, this.selected)
       return getBlackDirection(this.board, this.selected)
     }
     return []
@@ -40,6 +41,14 @@ class CheckersStore {
     if (this.turn === code) {
       this.selected = R.equals(this.selected)(position) ? null : position
     }
+  }
+
+  move(newPosition) {
+    const piece = this.board[this.selected.row][this.selected.column]
+    this.board[this.selected.row][this.selected.column] = empty
+    this.board[newPosition.row][newPosition.column] = piece
+    this.turn = this.turn === WHITE ? BLACK : WHITE
+    this.selected = null
   }
 }
 
@@ -54,6 +63,7 @@ decorate(CheckersStore, {
 
   // action
   clickOnPiece: action,
+  move: action,
 })
 
 export default CheckersStore
