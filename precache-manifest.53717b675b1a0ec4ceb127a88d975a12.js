@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bd3feaba184ed7fa562e2014721b4e9f",
+    "revision": "dca31868fd0f7da4904781b3d2ddd34d",
     "url": "/thai-checkers-game/index.html"
   },
   {
