@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/thai-checkers-game/precache-manifest.e70170e7d944d1e2f2e22fea3e610951.js"
+  "/thai-checkers-game/precache-manifest.ca0dc60da173fac619ab8d422e418d75.js"
 );
 
 self.addEventListener('message', (event) => {
