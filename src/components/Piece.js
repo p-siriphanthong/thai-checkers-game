@@ -31,30 +31,33 @@ const Circle = styled.div`
   }
 `
 
-const Piece = ({ checkersStore, checker, position, ratio = 0.9 }) => (
-  <React.Fragment>
-    {checker.code ? (
-      <Circle
-        color={checker.code}
-        enabled={
-          !checkersStore.isContinouse && checkersStore.turn === checker.code
-        }
-        active={R.equals(checkersStore.selected)(position)}
-        size={ratio * 100}
-        onClick={() =>
-          !checkersStore.isContinouse &&
-          checkersStore.clickOnPiece(checker.code, position)
-        }
-      >
-        {checker.isKing ? (
-          <KingIcon
-            color={checker.code === BLACK ? 'LightGray' : 'DimGrey'}
-            size={25}
-          />
-        ) : null}
-      </Circle>
-    ) : null}
-  </React.Fragment>
-)
+const Piece = ({ checkersStore, checker, position, ratio = 0.9 }) => {
+  const availablePieces = checkersStore.getAvailablePieces
+  const enabled = R.isEmpty(availablePieces)
+    ? true
+    : R.includes(position)(availablePieces)
+  return (
+    <React.Fragment>
+      {checker.code ? (
+        <Circle
+          color={checker.code}
+          enabled={enabled && checkersStore.turn === checker.code}
+          active={R.equals(checkersStore.selected)(position)}
+          size={ratio * 100}
+          onClick={() =>
+            enabled && checkersStore.clickOnPiece(checker.code, position)
+          }
+        >
+          {checker.isKing ? (
+            <KingIcon
+              color={checker.code === BLACK ? 'LightGray' : 'DimGrey'}
+              size={25}
+            />
+          ) : null}
+        </Circle>
+      ) : null}
+    </React.Fragment>
+  )
+}
 
 export default inject('checkersStore')(observer(Piece))

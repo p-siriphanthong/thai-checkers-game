@@ -27,19 +27,33 @@ class CheckersStore {
   selected = null
   isContinouse = false
 
+  get getAvailablePieces() {
+    const availablePieces = []
+    this.board.forEach((columns, row) => {
+      columns.forEach((piece, column) => {
+        const position = { row, column }
+        if (
+          piece.code === this.turn &&
+          !R.isEmpty(
+            this.getDirection(piece, this.turn, this.board, position, true),
+          )
+        )
+          availablePieces.push(position)
+      })
+    })
+    return availablePieces
+  }
+
   get getAvailablePositions() {
     if (this.selected) {
       const piece = this.board[this.selected.row][this.selected.column]
-      if (piece.isKing)
-        return getKingDirection(
-          this.turn,
-          this.board,
-          this.selected,
-          this.isContinouse,
-        )
-      if (piece.code === WHITE)
-        return getWhiteDirection(this.board, this.selected, this.isContinouse)
-      return getBlackDirection(this.board, this.selected, this.isContinouse)
+      return this.getDirection(
+        piece,
+        this.turn,
+        this.board,
+        this.selected,
+        this.isContinouse,
+      )
     }
     return []
   }
@@ -90,6 +104,14 @@ class CheckersStore {
     this.selected = null
     this.isContinouse = false
   }
+
+  getDirection(piece, code, board, position, mustCapture) {
+    if (piece.isKing)
+      return getKingDirection(code, board, position, mustCapture)
+    if (piece.code === WHITE)
+      return getWhiteDirection(board, position, mustCapture)
+    return getBlackDirection(board, position, mustCapture)
+  }
 }
 
 decorate(CheckersStore, {
@@ -99,6 +121,7 @@ decorate(CheckersStore, {
   selected: observable,
 
   // computed
+  getAvailablePieces: computed,
   getAvailablePositions: computed,
   getWinner: computed,
 

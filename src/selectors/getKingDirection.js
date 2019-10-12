@@ -3,7 +3,7 @@ import { BLACK, WHITE, EMPTY } from '../constants'
 
 const getEnemyCode = code => (code === WHITE ? BLACK : WHITE)
 
-const getLeftTopDirection = (code, board, position, isContinouse) => {
+const getLeftTopDirection = (code, board, position, mustCapture) => {
   const availablePositions = []
   const enemyCode = getEnemyCode(code)
 
@@ -14,7 +14,7 @@ const getLeftTopDirection = (code, board, position, isContinouse) => {
       calculatePosition.column,
       'code',
     ])(board)
-    if (!isContinouse && calculateCode === EMPTY) {
+    if (!mustCapture && calculateCode === EMPTY) {
       availablePositions.push(calculatePosition)
     } else if (
       calculateCode === enemyCode &&
@@ -39,7 +39,7 @@ const getLeftTopDirection = (code, board, position, isContinouse) => {
   return availablePositions
 }
 
-const getRightTopDirection = (code, board, position, isContinouse) => {
+const getRightTopDirection = (code, board, position, mustCapture) => {
   const availablePositions = []
   const enemyCode = getEnemyCode(code)
 
@@ -50,7 +50,7 @@ const getRightTopDirection = (code, board, position, isContinouse) => {
       calculatePosition.column,
       'code',
     ])(board)
-    if (!isContinouse && calculateCode === EMPTY) {
+    if (!mustCapture && calculateCode === EMPTY) {
       availablePositions.push(calculatePosition)
     } else if (
       calculateCode === enemyCode &&
@@ -75,7 +75,7 @@ const getRightTopDirection = (code, board, position, isContinouse) => {
   return availablePositions
 }
 
-const getLeftBottomDirection = (code, board, position, isContinouse) => {
+const getLeftBottomDirection = (code, board, position, mustCapture) => {
   const availablePositions = []
   const enemyCode = getEnemyCode(code)
 
@@ -86,7 +86,7 @@ const getLeftBottomDirection = (code, board, position, isContinouse) => {
       calculatePosition.column,
       'code',
     ])(board)
-    if (!isContinouse && calculateCode === EMPTY) {
+    if (!mustCapture && calculateCode === EMPTY) {
       availablePositions.push(calculatePosition)
     } else if (
       calculateCode === enemyCode &&
@@ -111,7 +111,7 @@ const getLeftBottomDirection = (code, board, position, isContinouse) => {
   return availablePositions
 }
 
-const getRightBottomDirection = (code, board, position, isContinouse) => {
+const getRightBottomDirection = (code, board, position, mustCapture) => {
   const availablePositions = []
   const enemyCode = getEnemyCode(code)
 
@@ -122,7 +122,7 @@ const getRightBottomDirection = (code, board, position, isContinouse) => {
       calculatePosition.column,
       'code',
     ])(board)
-    if (!isContinouse && calculateCode === EMPTY) {
+    if (!mustCapture && calculateCode === EMPTY) {
       availablePositions.push(calculatePosition)
     } else if (
       calculateCode === enemyCode &&
@@ -147,9 +147,9 @@ const getRightBottomDirection = (code, board, position, isContinouse) => {
   return availablePositions
 }
 
-export default (code, board, position, isContinouse) => [
-  ...getLeftTopDirection(code, board, position, isContinouse),
-  ...getRightTopDirection(code, board, position, isContinouse),
-  ...getLeftBottomDirection(code, board, position, isContinouse),
-  ...getRightBottomDirection(code, board, position, isContinouse),
+export default (code, board, position, mustCapture) => [
+  ...getLeftTopDirection(code, board, position, mustCapture),
+  ...getRightTopDirection(code, board, position, mustCapture),
+  ...getLeftBottomDirection(code, board, position, mustCapture),
+  ...getRightBottomDirection(code, board, position, mustCapture),
 ]
