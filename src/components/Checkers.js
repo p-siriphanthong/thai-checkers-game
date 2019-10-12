@@ -5,7 +5,7 @@ import { observer, inject } from 'mobx-react'
 import sound from '../utilities/createSound'
 import Piece from './Piece'
 
-const moveSound = new sound(require('../assets/sound.wav'))
+const moveSound = new sound(require('../assets/move-sound.wav'))
 
 const Wrapper = styled.div`
   width: calc(100vw - 20px);
