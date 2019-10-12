@@ -5,7 +5,7 @@ import getWhiteDirection from '../selectors/getWhiteDirection'
 import getBlackDirection from '../selectors/getBlackDirection'
 import getKingDirection from '../selectors/getKingDirection'
 
-const checker = (code, isKing = true) => ({ code, isKing })
+const checker = (code, isKing = false) => ({ code, isKing })
 const black = checker(BLACK)
 const white = checker(WHITE)
 const empty = checker(EMPTY)
