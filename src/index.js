@@ -6,7 +6,9 @@ import * as serviceWorker from './serviceWorker'
 
 const GlobalStyle = createGlobalStyle`
   body {
+    font-family: 'Roboto', sans-serif;
     background-color: SlateGrey;
+    margin: 0;
   }
 `
 

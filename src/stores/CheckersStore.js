@@ -5,7 +5,7 @@ import getWhiteDirection from '../selectors/getWhiteDirection'
 import getBlackDirection from '../selectors/getBlackDirection'
 import getKingDirection from '../selectors/getKingDirection'
 
-const checker = (code, isKing = false) => ({ code, isKing })
+const checker = (code, isKing = true) => ({ code, isKing })
 const black = checker(BLACK)
 const white = checker(WHITE)
 const empty = checker(EMPTY)
@@ -44,6 +44,14 @@ class CheckersStore {
     return []
   }
 
+  get getWinner() {
+    if (!R.filter(({ code }) => code === BLACK)(R.flatten(this.board)).length)
+      return WHITE
+    if (!R.filter(({ code }) => code === WHITE)(R.flatten(this.board)).length)
+      return BLACK
+    return undefined
+  }
+
   clickOnPiece(code, position) {
     if (this.turn === code) {
       this.selected = R.equals(this.selected)(position) ? null : position
@@ -75,6 +83,13 @@ class CheckersStore {
     this.selected = null
     this.isContinouse = false
   }
+
+  reset() {
+    this.board = initialBoard
+    this.turn = WHITE
+    this.selected = null
+    this.isContinouse = false
+  }
 }
 
 decorate(CheckersStore, {
@@ -85,10 +100,12 @@ decorate(CheckersStore, {
 
   // computed
   getAvailablePositions: computed,
+  getWinner: computed,
 
   // action
   clickOnPiece: action,
   move: action,
+  reset: action,
 })
 
 export default CheckersStore

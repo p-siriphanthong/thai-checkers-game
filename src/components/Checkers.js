@@ -5,16 +5,20 @@ import { observer, inject } from 'mobx-react'
 import Piece from './Piece'
 
 const Wrapper = styled.div`
-  width: ${props => props.size * 8}px;
-  height: ${props => props.size * 8}px;
+  width: calc(100vw - 20px);
+  height: calc(100vw - 20px);
+  max-width: ${props => props.size * 8}px;
+  max-height: ${props => props.size * 8}px;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
 `
 
 const Square = styled.div`
-  width: ${props => props.size}px;
-  height: ${props => props.size}px;
+  width: calc((100vw - 20px) / 8);
+  height: calc((100vw - 20px) / 8);
+  max-width: ${props => props.size}px;
+  max-height: ${props => props.size}px;
   background: ${props => (props.dark ? 'DimGrey' : 'LightGrey')};
   box-shadow: ${props => (props.active ? 'inset 0 0 10px DarkOrange' : 'none')};
   box-sizing: border-box;
@@ -24,7 +28,7 @@ const Square = styled.div`
   cursor: ${props => (props.active ? 'pointer' : 'default')};
 `
 
-const Checkers = ({ checkersStore, size = 80 }) => {
+const Checkers = ({ checkersStore, size = 75 }) => {
   const availablePositions = checkersStore.getAvailablePositions
   return (
     <Wrapper size={size}>
