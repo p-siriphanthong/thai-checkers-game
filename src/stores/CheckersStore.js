@@ -29,19 +29,27 @@ class CheckersStore {
 
   get getAvailablePieces() {
     const availablePieces = []
+    const allPieces = []
     this.board.forEach((columns, row) => {
       columns.forEach((piece, column) => {
         const position = { row, column }
-        if (
-          piece.code === this.turn &&
-          !R.isEmpty(
-            this.getDirection(piece, this.turn, this.board, position, true),
+        if (piece.code === this.turn) {
+          if (
+            !R.isEmpty(
+              this.getDirection(piece, this.turn, this.board, position, false),
+            )
           )
-        )
-          availablePieces.push(position)
+            allPieces.push(position)
+          if (
+            !R.isEmpty(
+              this.getDirection(piece, this.turn, this.board, position, true),
+            )
+          )
+            availablePieces.push(position)
+        }
       })
     })
-    return availablePieces
+    return R.isEmpty(availablePieces) ? allPieces : availablePieces
   }
 
   get getAvailablePositions() {
@@ -96,6 +104,8 @@ class CheckersStore {
     this.turn = this.turn === WHITE ? BLACK : WHITE
     this.selected = null
     this.isContinouse = false
+    if (R.isEmpty(this.getAvailablePieces))
+      this.turn = this.turn === WHITE ? BLACK : WHITE
   }
 
   reset() {

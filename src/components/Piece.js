@@ -33,9 +33,7 @@ const Circle = styled.div`
 
 const Piece = ({ checkersStore, checker, position, ratio = 0.9 }) => {
   const availablePieces = checkersStore.getAvailablePieces
-  const enabled = R.isEmpty(availablePieces)
-    ? true
-    : R.includes(position)(availablePieces)
+  const enabled = R.includes(position)(availablePieces)
   return (
     <React.Fragment>
       {checker.code ? (
