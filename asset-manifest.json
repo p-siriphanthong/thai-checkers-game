@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/thai-checkers-game/static/js/main.af8aae25.chunk.js",
+    "main.js.map": "/thai-checkers-game/static/js/main.af8aae25.chunk.js.map",
+    "runtime-main.js": "/thai-checkers-game/static/js/runtime-main.13bab532.js",
+    "runtime-main.js.map": "/thai-checkers-game/static/js/runtime-main.13bab532.js.map",
+    "static/js/2.0f11017c.chunk.js": "/thai-checkers-game/static/js/2.0f11017c.chunk.js",
+    "static/js/2.0f11017c.chunk.js.map": "/thai-checkers-game/static/js/2.0f11017c.chunk.js.map",
+    "index.html": "/thai-checkers-game/index.html",
+    "precache-manifest.7f9aed89d6eac251361e44674180134d.js": "/thai-checkers-game/precache-manifest.7f9aed89d6eac251361e44674180134d.js",
+    "service-worker.js": "/thai-checkers-game/service-worker.js"
+  }
+}
