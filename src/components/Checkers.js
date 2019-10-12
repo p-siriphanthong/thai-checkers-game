@@ -31,15 +31,21 @@ const Checkers = ({ checkersStore, size = 80 }) => {
       {[...Array(8).keys()].map(row =>
         [...Array(8).keys()].map(column => {
           const position = { row, column }
+          const availablePosition = R.find(availablePosition =>
+            R.and(
+              R.propEq('row', position.row)(availablePosition),
+              R.propEq('column', position.column)(availablePosition),
+            ),
+          )(availablePositions)
           return (
             <Square
               key={`${row}-${column}`}
-              active={R.includes(position)(availablePositions)}
+              active={!R.isNil(availablePosition)}
               dark={(row + column) % 2 !== 0}
               size={size}
               onClick={
-                R.includes(position)(availablePositions)
-                  ? () => checkersStore.move(position)
+                !R.isNil(availablePosition)
+                  ? () => checkersStore.move(availablePosition)
                   : undefined
               }
             >

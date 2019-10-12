@@ -1,3 +1,3 @@
-const getKingDirection = (board, position) => {}
+const getKingDirection = (board, position, isContinouse) => []
 
 export default getKingDirection

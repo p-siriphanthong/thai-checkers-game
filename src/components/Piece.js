@@ -36,10 +36,15 @@ const Piece = ({ checkersStore, checker, position, ratio = 0.9 }) => (
     {checker.code ? (
       <Circle
         color={checker.code}
-        enabled={checkersStore.turn === checker.code}
+        enabled={
+          !checkersStore.isContinouse && checkersStore.turn === checker.code
+        }
         active={R.equals(checkersStore.selected)(position)}
         size={ratio * 100}
-        onClick={() => checkersStore.clickOnPiece(checker.code, position)}
+        onClick={() =>
+          !checkersStore.isContinouse &&
+          checkersStore.clickOnPiece(checker.code, position)
+        }
       >
         {checker.isKing ? (
           <KingIcon

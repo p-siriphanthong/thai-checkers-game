@@ -1,12 +1,12 @@
 import * as R from 'ramda'
 import { WHITE, EMPTY } from '../constants'
 
-const getLeftDirection = (board, position) => {
+const getLeftDirection = (board, position, isContinouse) => {
   const availablePositions = []
   const leftCode = R.path([position.row + 1, position.column - 1, 'code'])(
     board,
   )
-  if (leftCode === EMPTY) {
+  if (!isContinouse && leftCode === EMPTY) {
     availablePositions.push({
       row: position.row + 1,
       column: position.column - 1,
@@ -18,17 +18,18 @@ const getLeftDirection = (board, position) => {
     availablePositions.push({
       row: position.row + 2,
       column: position.column - 2,
+      captured: { row: position.row + 1, column: position.column - 1 },
     })
   }
   return availablePositions
 }
 
-const getRightDirection = (board, position) => {
+const getRightDirection = (board, position, isContinouse) => {
   const availablePositions = []
   const rightCode = R.path([position.row + 1, position.column + 1, 'code'])(
     board,
   )
-  if (rightCode === EMPTY) {
+  if (!isContinouse && rightCode === EMPTY) {
     availablePositions.push({
       row: position.row + 1,
       column: position.column + 1,
@@ -40,13 +41,14 @@ const getRightDirection = (board, position) => {
     availablePositions.push({
       row: position.row + 2,
       column: position.column + 2,
+      captured: { row: position.row + 1, column: position.column + 1 },
     })
   }
   return availablePositions
 }
 
-export default (board, position) =>
+export default (board, position, isContinouse) =>
   R.concat(
-    getLeftDirection(board, position),
-    getRightDirection(board, position),
+    getLeftDirection(board, position, isContinouse),
+    getRightDirection(board, position, isContinouse),
   )
