@@ -47,8 +47,7 @@ const getRightDirection = (board, position, isContinouse) => {
   return availablePositions
 }
 
-export default (board, position, isContinouse) =>
-  R.concat(
-    getLeftDirection(board, position, isContinouse),
-    getRightDirection(board, position, isContinouse),
-  )
+export default (board, position, isContinouse) => [
+  ...getLeftDirection(board, position, isContinouse),
+  ...getRightDirection(board, position, isContinouse),
+]

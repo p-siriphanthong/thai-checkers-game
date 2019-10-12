@@ -31,7 +31,12 @@ class CheckersStore {
     if (this.selected) {
       const piece = this.board[this.selected.row][this.selected.column]
       if (piece.isKing)
-        return getKingDirection(this.board, this.selected, this.isContinouse)
+        return getKingDirection(
+          this.turn,
+          this.board,
+          this.selected,
+          this.isContinouse,
+        )
       if (piece.code === WHITE)
         return getWhiteDirection(this.board, this.selected, this.isContinouse)
       return getBlackDirection(this.board, this.selected, this.isContinouse)
