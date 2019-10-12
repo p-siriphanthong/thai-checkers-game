@@ -55,13 +55,15 @@ class CheckersStore {
   get getAvailablePositions() {
     if (this.selected) {
       const piece = this.board[this.selected.row][this.selected.column]
-      return this.getDirection(
+      const directions = this.getDirection(
         piece,
         this.turn,
         this.board,
         this.selected,
         this.isContinouse,
       )
+      const onlyCapturedDirections = R.filter(direction => direction.captured)(directions)
+      return R.isEmpty(onlyCapturedDirections) ? directions: onlyCapturedDirections
     }
     return []
   }
