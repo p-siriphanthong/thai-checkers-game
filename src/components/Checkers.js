@@ -2,7 +2,10 @@ import * as R from 'ramda'
 import React from 'react'
 import styled from 'styled-components'
 import { observer, inject } from 'mobx-react'
+import sound from '../utilities/createSound'
 import Piece from './Piece'
+
+const moveSound = new sound(require('../assets/sound.wav'))
 
 const Wrapper = styled.div`
   width: calc(100vw - 20px);
@@ -49,7 +52,10 @@ const Checkers = ({ checkersStore, size = 75 }) => {
               size={size}
               onClick={
                 !R.isNil(availablePosition)
-                  ? () => checkersStore.move(availablePosition)
+                  ? () => {
+                      checkersStore.move(availablePosition)
+                      moveSound.play()
+                    }
                   : undefined
               }
             >
