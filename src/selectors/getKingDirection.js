@@ -16,21 +16,24 @@ const getLeftTopDirection = (code, board, position, mustCapture) => {
     ])(board)
     if (!mustCapture && calculateCode === EMPTY) {
       availablePositions.push(calculatePosition)
-    } else if (
-      calculateCode === enemyCode &&
-      calculatePosition.row - 1 >= 0 &&
-      calculatePosition.column - 1 >= 0 &&
-      R.path([calculatePosition.row - 1, calculatePosition.column - 1, 'code'])(
-        board,
-      ) === EMPTY
-    ) {
-      availablePositions.push({
-        row: calculatePosition.row - 1,
-        column: calculatePosition.column - 1,
-        captured: calculatePosition,
-      })
+    } else if (calculateCode === enemyCode) {
+      if (
+        calculatePosition.row - 1 >= 0 &&
+        calculatePosition.column - 1 >= 0 &&
+        R.path([
+          calculatePosition.row - 1,
+          calculatePosition.column - 1,
+          'code',
+        ])(board) === EMPTY
+      ) {
+        availablePositions.push({
+          row: calculatePosition.row - 1,
+          column: calculatePosition.column - 1,
+          captured: calculatePosition,
+        })
+      }
       break
-    }
+    } else if (calculateCode === code) break
     calculatePosition = {
       row: calculatePosition.row - 1,
       column: calculatePosition.column - 1,
@@ -52,21 +55,24 @@ const getRightTopDirection = (code, board, position, mustCapture) => {
     ])(board)
     if (!mustCapture && calculateCode === EMPTY) {
       availablePositions.push(calculatePosition)
-    } else if (
-      calculateCode === enemyCode &&
-      calculatePosition.row - 1 >= 0 &&
-      calculatePosition.column + 1 <= 7 &&
-      R.path([calculatePosition.row - 1, calculatePosition.column + 1, 'code'])(
-        board,
-      ) === EMPTY
-    ) {
-      availablePositions.push({
-        row: calculatePosition.row - 1,
-        column: calculatePosition.column + 1,
-        captured: calculatePosition,
-      })
+    } else if (calculateCode === enemyCode) {
+      if (
+        calculatePosition.row - 1 >= 0 &&
+        calculatePosition.column + 1 <= 7 &&
+        R.path([
+          calculatePosition.row - 1,
+          calculatePosition.column + 1,
+          'code',
+        ])(board) === EMPTY
+      ) {
+        availablePositions.push({
+          row: calculatePosition.row - 1,
+          column: calculatePosition.column + 1,
+          captured: calculatePosition,
+        })
+      }
       break
-    }
+    } else if (calculateCode === code) break
     calculatePosition = {
       row: calculatePosition.row - 1,
       column: calculatePosition.column + 1,
@@ -88,21 +94,24 @@ const getLeftBottomDirection = (code, board, position, mustCapture) => {
     ])(board)
     if (!mustCapture && calculateCode === EMPTY) {
       availablePositions.push(calculatePosition)
-    } else if (
-      calculateCode === enemyCode &&
-      calculatePosition.row + 1 <= 7 &&
-      calculatePosition.column - 1 >= 0 &&
-      R.path([calculatePosition.row + 1, calculatePosition.column - 1, 'code'])(
-        board,
-      ) === EMPTY
-    ) {
-      availablePositions.push({
-        row: calculatePosition.row + 1,
-        column: calculatePosition.column - 1,
-        captured: calculatePosition,
-      })
+    } else if (calculateCode === enemyCode) {
+      if (
+        calculatePosition.row + 1 <= 7 &&
+        calculatePosition.column - 1 >= 0 &&
+        R.path([
+          calculatePosition.row + 1,
+          calculatePosition.column - 1,
+          'code',
+        ])(board) === EMPTY
+      ) {
+        availablePositions.push({
+          row: calculatePosition.row + 1,
+          column: calculatePosition.column - 1,
+          captured: calculatePosition,
+        })
+      }
       break
-    }
+    } else if (calculateCode === code) break
     calculatePosition = {
       row: calculatePosition.row + 1,
       column: calculatePosition.column - 1,
@@ -124,21 +133,24 @@ const getRightBottomDirection = (code, board, position, mustCapture) => {
     ])(board)
     if (!mustCapture && calculateCode === EMPTY) {
       availablePositions.push(calculatePosition)
-    } else if (
-      calculateCode === enemyCode &&
-      calculatePosition.row + 1 <= 7 &&
-      calculatePosition.column + 1 <= 7 &&
-      R.path([calculatePosition.row + 1, calculatePosition.column + 1, 'code'])(
-        board,
-      ) === EMPTY
-    ) {
-      availablePositions.push({
-        row: calculatePosition.row + 1,
-        column: calculatePosition.column + 1,
-        captured: calculatePosition,
-      })
-      break
-    }
+    } else if (calculateCode === enemyCode) {
+      if (
+        calculatePosition.row + 1 <= 7 &&
+        calculatePosition.column + 1 <= 7 &&
+        R.path([
+          calculatePosition.row + 1,
+          calculatePosition.column + 1,
+          'code',
+        ])(board) === EMPTY
+      ) {
+        availablePositions.push({
+          row: calculatePosition.row + 1,
+          column: calculatePosition.column + 1,
+          captured: calculatePosition,
+        })
+        break
+      }
+    } else if (calculateCode === code) break
     calculatePosition = {
       row: calculatePosition.row + 1,
       column: calculatePosition.column + 1,
