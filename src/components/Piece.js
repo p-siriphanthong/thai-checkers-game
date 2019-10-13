@@ -6,7 +6,7 @@ import { BLACK } from '../constants'
 import KingIcon from './KingIcon'
 
 const Circle = styled.div`
-  background-color: ${props => (props.color === BLACK ? 'Black' : 'White')};
+  background-color: ${props => (props.code === BLACK ? 'Black' : 'White')};
   box-shadow: ${props => (props.active ? '0 0 10px DarkOrange' : 'none')};
   width: ${props => props.size}%;
   height: ${props => props.size}%;
@@ -15,6 +15,7 @@ const Circle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: ${props => (!props.enabled && props.code === props.turn ? 0.5 : 1)};
   cursor: ${props => (props.enabled ? 'pointer' : 'default')};
 
   &:after {
@@ -25,7 +26,7 @@ const Circle = styled.div`
     left: 10%;
     position: absolute;
     border: 1px solid
-      ${props => (props.color === BLACK ? 'LightGray' : 'DimGrey')};
+      ${props => (props.code === BLACK ? 'LightGray' : 'DimGrey')};
     border-radius: 100%;
     box-sizing: border-box;
   }
@@ -38,7 +39,8 @@ const Piece = ({ checkersStore, checker, position, ratio = 0.9 }) => {
     <React.Fragment>
       {checker.code ? (
         <Circle
-          color={checker.code}
+          code={checker.code}
+          turn={checkersStore.turn}
           enabled={enabled && checkersStore.turn === checker.code}
           active={R.equals(checkersStore.selected)(position)}
           size={ratio * 100}
