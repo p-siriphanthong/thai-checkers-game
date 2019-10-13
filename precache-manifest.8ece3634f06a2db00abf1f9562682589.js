@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cd4314f3b571c5d659e43ac5d45ed385",
+    "revision": "ed436d29121d76bc14f211689a0bec41",
     "url": "/thai-checkers-game/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/thai-checkers-game/static/js/2.0c0a03e1.chunk.js"
   },
   {
-    "revision": "848d8c4f36683697a4d8",
-    "url": "/thai-checkers-game/static/js/main.058b2dad.chunk.js"
+    "revision": "3c4f98fc2696b498c55d",
+    "url": "/thai-checkers-game/static/js/main.81a957f1.chunk.js"
   },
   {
     "revision": "61dd766344be10b1222a",
