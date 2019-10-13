@@ -148,8 +148,8 @@ const getRightBottomDirection = (code, board, position, mustCapture) => {
           column: calculatePosition.column + 1,
           captured: calculatePosition,
         })
-        break
       }
+      break
     } else if (calculateCode === code) break
     calculatePosition = {
       row: calculatePosition.row + 1,
