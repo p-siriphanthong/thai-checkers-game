@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/thai-checkers-game/static/js/main.9b95b79d.chunk.js",
-    "main.js.map": "/thai-checkers-game/static/js/main.9b95b79d.chunk.js.map",
+    "main.js": "/thai-checkers-game/static/js/main.058b2dad.chunk.js",
+    "main.js.map": "/thai-checkers-game/static/js/main.058b2dad.chunk.js.map",
     "runtime-main.js": "/thai-checkers-game/static/js/runtime-main.13bab532.js",
     "runtime-main.js.map": "/thai-checkers-game/static/js/runtime-main.13bab532.js.map",
     "static/js/2.0c0a03e1.chunk.js": "/thai-checkers-game/static/js/2.0c0a03e1.chunk.js",
     "static/js/2.0c0a03e1.chunk.js.map": "/thai-checkers-game/static/js/2.0c0a03e1.chunk.js.map",
     "index.html": "/thai-checkers-game/index.html",
-    "precache-manifest.addc492511bbf58574c7375272528586.js": "/thai-checkers-game/precache-manifest.addc492511bbf58574c7375272528586.js",
+    "precache-manifest.19e1cc058321e5d0e3fdb533010287ff.js": "/thai-checkers-game/precache-manifest.19e1cc058321e5d0e3fdb533010287ff.js",
     "service-worker.js": "/thai-checkers-game/service-worker.js",
     "static/media/move-sound.wav": "/thai-checkers-game/static/media/move-sound.07bef98b.wav"
   }
