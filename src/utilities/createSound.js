@@ -1,11 +1,6 @@
 export default class {
   constructor(src) {
-    this.sound = document.createElement('audio')
-    this.sound.src = src
-    this.sound.setAttribute('preload', 'auto')
-    this.sound.setAttribute('controls', 'none')
-    this.sound.style.display = 'none'
-    document.body.appendChild(this.sound)
+    this.sound = new Audio(src)
   }
 
   play = () => {
@@ -14,5 +9,6 @@ export default class {
 
   stop = () => {
     this.sound.pause()
+    this.sound.currentTime = 0
   }
 }
